@@ -1,0 +1,22 @@
+Assuming you've already have your keys in your .ssh folder, use the following to stop having to type in the passphrase for that particular temrinal session:
+
+eval `ssh-agent`
+ssh-add
+
+A more persistent and somehwat secure solution (PREFERRED):
+
+
+
+Add this to your ~/.bashrc, then log out and back in to take effect.
+
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
+
+This should only prompt for a password the first time you log in after each reboot. It will keep reusing the same ssh-agent as long as it's running.
+
+
+source: https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-a-password-prompt
