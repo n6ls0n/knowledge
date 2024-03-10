@@ -1,11 +1,9 @@
-Assuming you've already have your keys in your .ssh folder, use the following to stop having to type in the passphrase for that particular temrinal session:
+Assuming you already have your keys in your .ssh folder, use the following to stop having to type in the passphrase for that particular terminal session:
 
 eval `ssh-agent`
 ssh-add
 
 A more persistent and somehwat secure solution (PREFERRED):
-
-
 
 Add this to your ~/.bashrc, then log out and back in to take effect.
 
