@@ -1,0 +1,43 @@
+Shell commands to install asdf and then use it to install Ruby and Node.
+
+#System setup
+sudo apt-get update
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+
+###ASDF Installation###
+cd
+git clone https://github.com/excid3/asdf.git ~/.asdf
+echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
+echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
+echo 'legacy_version_file = yes' >> ~/.asdfrc
+echo 'export EDITOR="code --wait"' >> ~/.bashrc
+exec $SHELL
+
+###Ruby Installation###
+asdf plugin add ruby
+asdf plugin add nodejs
+
+#Edit version number for your purposes
+asdf install ruby 3.3.0
+asdf global ruby 3.3.0
+
+# Update to the latest Rubygems version
+gem update --system
+
+#Verify installation
+which ruby
+ruby -v
+
+###Node Installation###
+
+asdf install nodejs 20.11.0
+asdf global nodejs 20.11.0
+
+#Veirfy Installation
+which node
+node -v
+
+# Install yarn for Rails jsbundling/cssbundling or webpacker
+npm install -g yarn
+
+source:https://gorails.com/setup/ubuntu/22.04
