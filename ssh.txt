@@ -1,3 +1,5 @@
+### Unix
+
 Assuming you already have your keys in your .ssh folder, use the following to stop having to type in the passphrase for that particular terminal session:
 
 eval `ssh-agent`
@@ -18,3 +20,8 @@ This should only prompt for a password the first time you log in after each rebo
 
 
 source: https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-a-password-prompt
+
+
+### Windows
+
+https://interworks.com/blog/2021/09/15/setting-up-ssh-agent-in-windows-for-passwordless-git-authentication/
